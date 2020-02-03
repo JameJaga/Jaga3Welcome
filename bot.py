@@ -21,7 +21,6 @@ async def on_member_join(member):
     await message.channel.send(embed=embed)
     role = discord.utils.get(message.guild.roles, name='NotCertified')
     await member.add_roles(role)
-    channel = 
 async def on_member_remove(member):
     channel = client.get_channel(673782210771550229)
     embed = discord.Embed(title="Joined",description = f'{str(member)}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
