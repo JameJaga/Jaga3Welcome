@@ -6,9 +6,11 @@ TOKEN = os.environ.get("DISCORD_TOKEN")
 client = discord.Client()
 
 guild = client.get_guild(662153006787199046)
-
+global send_msg
+send_msg = None
 @client.event
 async def on_ready():
+    global send_msg
     print('We have logged in as {0.user}'.format(client))
     channel = client.get_channel(673798279552565268)
     await channel.purge()
@@ -36,8 +38,9 @@ async def on_member_remove(member):
 #リアクションで参加   
 ID_CHANNEL_README = 673798279552565268
 ID_ROLE_WELCOME = 663566271446515758
-@client.event  
-async def on_raw_reaction_add(payload):  
+@client.event
+async def on_raw_reaction_add(payload):
+    global send_msg
     channel = client.get_channel(payload.channel_id)  
     if channel.id == ID_CHANNEL_README:  
         guild = client.get_guild(payload.guild_id)  
@@ -50,6 +53,5 @@ async def on_raw_reaction_add(payload):
         role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
         await member.add_roles(role)
         embed = discord.Embed(title="Joined",description = f'@{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
-        await channel.send(embed=embed)
-        await remove_reaction('✅', member)
+        await send_msg.remove_reaction('✅', member)
 client.run(TOKEN)
