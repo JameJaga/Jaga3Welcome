@@ -44,5 +44,6 @@ async def on_raw_reaction_add(payload):
         channel = client.get_channel(674169297001775114)
         role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
         await member.add_roles(role)
-        await channel.send(f'{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:。') 
+        embed = discord.Embed(title="Joined",description = f'{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
+    await channel.send(embed=embed)
 client.run(TOKEN)
