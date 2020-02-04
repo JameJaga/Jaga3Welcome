@@ -8,6 +8,7 @@ client = discord.Client()
 guild = client.get_guild(662153006787199046)
 global send_msg
 send_msg = None
+bot = 1
 @client.event
 async def on_ready():
     global send_msg
@@ -17,7 +18,6 @@ async def on_ready():
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
     send_msg = await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
     await send_msg.add_reaction('✅')
-    bot = 1
 @client.event
 async def on_member_join(member):
     #入退室ログ
