@@ -15,6 +15,18 @@ async def on_ready():
     await channel.purge()
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
     await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
+    ID_CHANNEL_README = 673798279552565268
+    ID_ROLE_WELCOME = 663566271446515758
+    @client.event  
+    async def on_raw_reaction_add(payload):  
+        channel = client.get_channel(payload.channel_id)  
+        if channel.id == ID_CHANNEL_README:  
+            guild = client.get_guild(payload.guild_id)  
+            member = guild.get_member(payload.user_id)  
+            role = guild.get_role(ID_ROLE_WELCOME)  
+            await member.add_roles(role)
+            channel = client.get_channel(674169297001775114)
+            await channel.send(f'{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:。') 
 
 @client.event
 async def on_member_join(member):
