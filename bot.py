@@ -20,7 +20,7 @@ async def on_ready():
 async def on_member_join(member):
     #入退室ログ
     channel = client.get_channel(673782210771550229)
-    embed = discord.Embed(title="Joined",description = f'{str(member)}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
+    embed = discord.Embed(title="Joined",description = f'@{str(member)}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
     await channel.send(embed=embed)
     role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
     await member.add_roles(role)
@@ -28,9 +28,13 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     channel = client.get_channel(673782210771550229)
-    embed = discord.Embed(title="Joined",description = f'{str(member)}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
+    embed = discord.Embed(title="Joined",description = f'@{str(member)}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
     await channel.send(embed=embed)
-
+    channel = client.get_channel(674169297001775114)
+    embed = discord.Embed(title="Joined",description = f'@{str(member)}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
+    await channel.send(embed=embed)
+    
+#リアクションで参加   
 ID_CHANNEL_README = 673798279552565268
 ID_ROLE_WELCOME = 663566271446515758
 @client.event  
@@ -44,6 +48,6 @@ async def on_raw_reaction_add(payload):
         channel = client.get_channel(674169297001775114)
         role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
         await member.add_roles(role)
-        embed = discord.Embed(title="Joined",description = f'{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
-    await channel.send(embed=embed)
+        embed = discord.Embed(title="Joined",description = f'@{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
+        await channel.send(embed=embed)
 client.run(TOKEN)
