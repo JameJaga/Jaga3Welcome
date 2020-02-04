@@ -14,7 +14,7 @@ async def on_ready():
     await channel.purge()
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
     sed_msg = await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
-    await snd_msgadd_reaction(✅)
+    await snd_msgadd_reaction('✅')
 @client.event
 async def on_member_join(member):
     #入退室ログ
@@ -51,5 +51,5 @@ async def on_raw_reaction_add(payload):
         await member.add_roles(role)
         embed = discord.Embed(title="Joined",description = f'@{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
         await channel.send(embed=embed)
-        await remove_reaction(✅, member)
+        await remove_reaction('✅', member)
 client.run(TOKEN)
