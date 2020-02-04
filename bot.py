@@ -46,6 +46,8 @@ async def on_raw_reaction_add(payload):
         role = guild.get_role(ID_ROLE_WELCOME)  
         await member.add_roles(role)
         channel = client.get_channel(674169297001775114)
+        role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
+        await member.remove_roles(role)
         role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
         await member.add_roles(role)
         embed = discord.Embed(title="Joined",description = f'@{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
