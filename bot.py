@@ -8,6 +8,7 @@ client = discord.Client()
 guild = client.get_guild(662153006787199046)
 global send_msg
 send_msg = None
+global bot
 bot = 1
 @client.event
 async def on_ready():
@@ -36,11 +37,12 @@ async def on_member_remove(member):
     embed = discord.Embed(title="Joined",description = f'@{str(member)}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
     await channel.send(embed=embed)
     
-#リアクションで参加   
+#リアクションで参加
 ID_CHANNEL_README = 673798279552565268
 ID_ROLE_WELCOME = 663566271446515758
 @client.event
 async def on_raw_reaction_add(payload):
+    global bot
     if(bot != 1):
         global send_msg
         channel = client.get_channel(payload.channel_id)  
