@@ -13,8 +13,8 @@ async def on_ready():
     channel = client.get_channel(673798279552565268)
     await channel.purge()
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
-    await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
-
+    sed_msg = await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
+    await snd_msgadd_reaction(✅)
 @client.event
 async def on_member_join(member):
     #入退室ログ
