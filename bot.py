@@ -48,7 +48,7 @@ async def on_raw_reaction_add(payload):
         guild = client.get_guild(payload.guild_id)           
         member = guild.get_member(payload.user_id)
         role = guild.get_role(ID_ROLE_WELCOME)  
-        if(member != 672727918392246273):
+        if member.bot != True:
             await member.add_roles(role)
             channel = client.get_channel(674169297001775114)
             role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
