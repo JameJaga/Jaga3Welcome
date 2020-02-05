@@ -9,7 +9,6 @@ guild = client.get_guild(662153006787199046)
 global send_msg
 send_msg = None
 global bot
-bot = 1
 @client.event
 async def on_ready():
     global send_msg
@@ -43,14 +42,13 @@ ID_CHANNEL_README = 673798279552565268
 ID_ROLE_WELCOME = 663566271446515758
 @client.event
 async def on_raw_reaction_add(payload):
-    global bot
-    if(bot != 1):
-        global send_msg
-        channel = client.get_channel(payload.channel_id)  
-        if channel.id == ID_CHANNEL_README:  
-            guild = client.get_guild(payload.guild_id)  
-            member = guild.get_member(payload.user_id)
-            role = guild.get_role(ID_ROLE_WELCOME)  
+    global send_msg
+    channel = client.get_channel(payload.channel_id)  
+    if channel.id == ID_CHANNEL_README:  
+        guild = client.get_guild(payload.guild_id)           
+        member = guild.get_member(payload.user_id)
+        role = guild.get_role(ID_ROLE_WELCOME)  
+        if(member != 672727918392246273):
             await member.add_roles(role)
             channel = client.get_channel(674169297001775114)
             role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
