@@ -19,11 +19,12 @@ async def on_ready():
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
     send_msg = await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
     await send_msg.add_reaction('✅')
+    
 @client.event
 async def on_member_join(member):
     #入退室ログ
     channel = client.get_channel(673782210771550229)
-    embed = discord.Embed(title="Joined",description = f'@{str(member)}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
+    embed = discord.Embed(title="Joined",description = f'{member.mention}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
     await channel.send(embed=embed)
     role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
     await member.add_roles(role)
@@ -31,10 +32,10 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     channel = client.get_channel(673782210771550229)
-    embed = discord.Embed(title="Joined",description = f'@{str(member)}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
+    embed = discord.Embed(title="Joined",description = f'{member.mention}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
     await channel.send(embed=embed)
     channel = client.get_channel(674169297001775114)
-    embed = discord.Embed(title="Joined",description = f'@{str(member)}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
+    embed = discord.Embed(title="Joined",description = f'{member.mention}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
     await channel.send(embed=embed)
     
 #リアクションで参加
@@ -56,7 +57,7 @@ async def on_raw_reaction_add(payload):
             await member.remove_roles(role)
             role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
             await member.add_roles(role)
-            embed = discord.Embed(title="Joined",description = f'@{str(member)}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
+            embed = discord.Embed(title="Joined",description = f'{member.mention}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
             await channel.send(embed=embed)
             await send_msg.remove_reaction('✅', member)
 client.run(TOKEN)
