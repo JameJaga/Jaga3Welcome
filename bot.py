@@ -58,5 +58,5 @@ async def on_raw_reaction_add(payload):
             embed = discord.Embed(title="Joined",description = f'{member.mention}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
             await channel.send(embed=embed)
             await send_msg.remove_reaction('✅', member)
-client.run(TOKEN)
+client.run()
 
