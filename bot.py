@@ -51,10 +51,13 @@ async def on_raw_reaction_add(payload):
         if member.bot != True:
             await member.add_roles(role)
             channel = client.get_channel(674169297001775114)
-            role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
+            role = discord.utils.get(guild.roles, name=NotCertified)
             await member.remove_roles(role)
-            role = discord.utils.find(lambda r: r.name == '082', member.guild.roles)  
+            role = discord.utils.get(guild.roles, name=Guest)  
             await member.add_roles(role)
+            role = discord.utils.get(guild.roles, name=joined)
+            await member.add_roles(role)
+            role = dis
             embed = discord.Embed(title="Joined",description = f'{member.mention}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
             await channel.send(embed=embed)
             await send_msg.remove_reaction('✅', member)
