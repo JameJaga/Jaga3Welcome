@@ -13,7 +13,6 @@ async def on_ready():
     global send_msg
     print('We have logged in as {0.user}'.format(client))
     channel = client.get_channel(673798279552565268)
-    await channel.purge()
     await channel.send('**ジャガの部屋へようこそ！**\nわいわい雑談・ゲームしたりしましょう！:smile:\n招待リンクです→→ https://discord.gg/uGUKFPb')
     send_msg = await channel.send('インターネットのルールをしっかり守れないと処罰されますよ！\nここはBOTの開発のテストサーバーも兼ねてるので通知がうるさいかも！\nそれでもいいよってひとは下の:white_check_mark: をおしてね！')
     await send_msg.add_reaction('✅')
