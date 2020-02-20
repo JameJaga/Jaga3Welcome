@@ -1,6 +1,5 @@
 import discord
 import os
-
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
 client = discord.Client()
@@ -57,7 +56,6 @@ async def on_raw_reaction_add(payload):
             await member.add_roles(role)
             role = discord.utils.get(guild.roles, name='joined')
             await member.add_roles(role)
-            role = dis
             embed = discord.Embed(title="Joined",description = f'{member.mention}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
             await channel.send(embed=embed)
             await send_msg.remove_reaction('✅', member)
