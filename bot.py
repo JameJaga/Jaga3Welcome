@@ -51,11 +51,11 @@ async def on_raw_reaction_add(payload):
         if member.bot != True:
             await member.add_roles(role)
             channel = client.get_channel(674169297001775114)
-            role = discord.utils.get(guild.roles, name=NotCertified)
+            role = discord.utils.get(guild.roles, name='NotCertified')
             await member.remove_roles(role)
-            role = discord.utils.get(guild.roles, name=Guest)  
+            role = discord.utils.get(guild.roles, name='Guest')  
             await member.add_roles(role)
-            role = discord.utils.get(guild.roles, name=joined)
+            role = discord.utils.get(guild.roles, name='joined')
             await member.add_roles(role)
             role = dis
             embed = discord.Embed(title="Joined",description = f'{member.mention}がジャガの部屋に来たよ！よろしく！ :smile:',color=discord.Colour.from_rgb(0, 255, 255))
