@@ -62,4 +62,3 @@ async def on_raw_reaction_add(payload):
             await channel.send(embed=embed)
             await send_msg.remove_reaction('✅', member)
 client.run(TOKEN)
-
