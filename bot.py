@@ -38,7 +38,7 @@ async def on_member_remove(member):
     
 #リアクションで参加
 ID_CHANNEL_README = 673798279552565268
-ID_ROLE_WELCOME = 663566271446515758
+ID_ROLE_WELCOME = 678892333928022051
 @client.event
 async def on_raw_reaction_add(payload):
     global send_msg
