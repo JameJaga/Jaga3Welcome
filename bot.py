@@ -21,6 +21,7 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     #入退室ログ
+    guild = client.get_guild(662153006787199046)
     channel = client.get_channel(673782210771550229)
     embed = discord.Embed(title="Joined",description = f'{member.mention}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
     await channel.send(embed=embed)
