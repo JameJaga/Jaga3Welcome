@@ -24,7 +24,7 @@ async def on_member_join(member):
     channel = client.get_channel(673782210771550229)
     embed = discord.Embed(title="Joined",description = f'{member.mention}が参加。',color=discord.Colour.from_rgb(0, 255, 255))
     await channel.send(embed=embed)
-    role = discord.utils.find(lambda r: r.name == 'NotCertified', member.guild.roles)  
+    role = discord.utils.get(guild.roles, name="NotCertified")
     await member.add_roles(role)
     
 @client.event
