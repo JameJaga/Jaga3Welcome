@@ -34,9 +34,11 @@ async def on_member_remove(member):
     channel = client.get_channel(673782210771550229)
     embed = discord.Embed(title="Joined",description = f'{member.mention}が退出。',color=discord.Colour.from_rgb(255, 0, 0))
     await channel.send(embed=embed)
-    channel = client.get_channel(674169297001775114)
-    embed = discord.Embed(title="Left",description = f'{member.mention}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
-    await channel.send(embed=embed)
+    access = discord.utils.get(guild.roles, name="joined")
+    if access in user.roles: 
+        channel = client.get_channel(674169297001775114)
+        embed = discord.Embed(title="Left",description = f'{member.mention}さんが退出...さようなら...また逢う日まで',color=discord.Colour.from_rgb(255, 0, 0))
+        await channel.send(embed=embed)
     
 #リアクションで参加
 ID_CHANNEL_README = 673798279552565268
